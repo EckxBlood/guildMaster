@@ -7,6 +7,12 @@
  */
 
 namespace App\Http\Controllers;
+use App\Membre;
+
+use Illuminate\Http\Request;
+
+use App\Http\Requests;
+use App\Http\Controllers\Controller;
 
 
 class MembresController
@@ -14,7 +20,8 @@ class MembresController
 
     public function index()
     {
-        return view('membres.index');
+        $data = membre::all();
+        return view('membres.index', ['data' => $data]);
     }
 
 }
