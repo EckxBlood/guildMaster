@@ -15,7 +15,10 @@ class CreateMembreTable extends Migration
     {
         Schema::create('membres', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            $table->string('name');
+            $table->string('description');
+            $table->string('competence');
+            $table->integer('lifePoints');
         });
     }
 

@@ -15,7 +15,10 @@ class CreateQueteTable extends Migration
     {
         Schema::create('quetes', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            $table->string('name');
+            $table->string('description');
+            $table->integer('cout');
+            $table->integer('recompense');
         });
     }
 
