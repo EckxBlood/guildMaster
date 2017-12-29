@@ -14,7 +14,7 @@ class MembresController
 
     public function index()
     {
-        return view('quetes/index.blade.php');
+        return view('membres.index');
     }
 
 }
