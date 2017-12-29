@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        {{ $data[0]->name }}
-    </div>
+    @foreach($data as $membre)
+        <div class="container">
+            {{ $membre->name }}
+        </div>
+    @endforeach
 @endsection

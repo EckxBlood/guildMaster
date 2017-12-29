@@ -7,6 +7,8 @@
  */
 
 namespace App\Http\Controllers;
+use App\Http\Requests;
+use App\Quete;
 
 
 class QuetesController
@@ -14,7 +16,8 @@ class QuetesController
 
     public function index()
     {
-        return view('quetes.index');
+        $data = quete::all();
+        return view('membres.index', ['data' => $data]);
     }
 
 }
