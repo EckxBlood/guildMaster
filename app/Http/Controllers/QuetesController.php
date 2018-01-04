@@ -19,4 +19,13 @@ class QuetesController
         $data = quete::all();
         return view('quetes.index', ['data' => $data]);
     }
+
+    public function startQuest($idMembre, $idQuest) {
+        quete::table('quetes')
+            ->where('id', $idQuest)
+            ->update(['membre_id' => $idMembre]);
+
+        $data = quete::all();
+        return view('quetes.index', ['data' => $data]);
+    }
 }
