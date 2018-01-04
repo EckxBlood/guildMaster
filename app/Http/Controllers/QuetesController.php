@@ -9,6 +9,7 @@
 namespace App\Http\Controllers;
 use App\Http\Requests;
 use App\Quete;
+use Illuminate\Support\Facades\DB;
 
 
 class QuetesController
@@ -21,7 +22,7 @@ class QuetesController
     }
 
     public function startQuest($idMembre, $idQuest) {
-        quete::table('quetes')
+        DB::table('quetes')
             ->where('id', $idQuest)
             ->update(['membre_id' => $idMembre]);
 
@@ -30,7 +31,7 @@ class QuetesController
     }
 
     public function questComplete($idQuest) {
-        $dateFin = quete::table('quetes')
+        $dateFin = DB::table('quetes')
             ->select('dateFin')
             ->where('id', $idQuest)
             ->get();
