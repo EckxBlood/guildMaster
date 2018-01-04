@@ -15,7 +15,7 @@ class Quete extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'description', 'recompense', 'duree',
+        'name', 'description', 'recompense', 'dateDebut', 'dateFin'
     ];
 
     /**

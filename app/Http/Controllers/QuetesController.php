@@ -28,4 +28,8 @@ class QuetesController
         $data = quete::all();
         return view('quetes.index', ['data' => $data]);
     }
+
+    public function questComplete() {
+
+    }
 }

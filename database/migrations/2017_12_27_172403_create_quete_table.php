@@ -18,7 +18,8 @@ class CreateQueteTable extends Migration
             $table->string('name');
             $table->string('description');
             $table->integer('recompense');
-            $table->integer('duree');
+            $table->date('dateDebut');
+            $table->date('dateFin');
             $table->integer('membre_id');
         });
     }
