@@ -17,8 +17,8 @@ class CreateQueteTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('description');
-            $table->integer('cout');
             $table->integer('recompense');
+            $table->integer('duree');
         });
     }
 

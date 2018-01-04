@@ -15,7 +15,7 @@ class Membre extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'description', 'password', 'competence', 'lifePoints',
+        'name', 'description', 'attaque', 'defense', 'niveau'
     ];
 
     /**
@@ -24,6 +24,6 @@ class Membre extends Model
      * @var array
      */
     protected $hidden = [
-
+        'id'
     ];
 }

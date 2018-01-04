@@ -17,8 +17,9 @@ class CreateMembreTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('description');
-            $table->string('competence');
-            $table->integer('lifePoints');
+            $table->integer('attaque');
+            $table->integer('defense');
+            $table->integer('niveau');
         });
     }
 

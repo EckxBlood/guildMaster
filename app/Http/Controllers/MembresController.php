@@ -24,4 +24,7 @@ class MembresController
         return view('membres.index', ['data' => $data]);
     }
 
+    public function startQuest($idQuest, $duree) {
+
+    }
 }
