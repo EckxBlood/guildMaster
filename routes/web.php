@@ -19,4 +19,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/membres', 'MembresController@index')->name('membres');
+
+//Quetes
 Route::get('/quetes', 'QuetesController@index')->name('quetes');
+Route::get('/quetes/start/idMembre/{idMembre}/idQuest/{idQuest}', 'QuetesController@startQuest')->name('quetes.start');
+Route::post('/quetes/complete/{idQuest}', 'QuetesController@questComplete')->name('quetes.complete');

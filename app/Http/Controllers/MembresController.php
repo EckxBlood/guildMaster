@@ -23,5 +23,4 @@ class MembresController
         $data = membre::all();
         return view('membres.index', ['data' => $data]);
     }
-
 }

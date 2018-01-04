@@ -29,7 +29,18 @@ class QuetesController
         return view('quetes.index', ['data' => $data]);
     }
 
-    public function questComplete() {
+    public function questComplete($idQuest) {
+        $dateFin = quete::table('quetes')
+            ->select('dateFin')
+            ->where('id', $idQuest)
+            ->get();
 
+        $dateActuelle = date('d/m/Y');
+
+        if($dateFin > $dateActuelle) {
+            echo "bonjour";
+        } else {
+            echo "dommage";
+        }
     }
 }
