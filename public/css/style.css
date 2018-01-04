@@ -1,0 +1,11 @@
+.quete{
+    background-color: white;
+    border: 0.4px solid black;
+    margin: 2%;
+    display: flex;
+    padding: 10px;
+}
+
+.quete button{
+    text-align: right;
+}
