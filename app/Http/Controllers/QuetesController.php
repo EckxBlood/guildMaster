@@ -17,7 +17,6 @@ class QuetesController
     public function index()
     {
         $data = quete::all();
-        return view('membres.index', ['data' => $data]);
+        return view('quetes.index', ['data' => $data]);
     }
-
 }
