@@ -9,6 +9,7 @@
 namespace App\Http\Controllers;
 use App\Http\Requests;
 use App\Quete;
+use DateTime;
 use Illuminate\Support\Facades\DB;
 
 
@@ -22,9 +23,12 @@ class QuetesController
     }
 
     public function startQuest($idMembre, $idQuest) {
+
+        $end = date('Y-m-d H:i:s' , strtotime('now +1 Hour +20 seconds'));
+
         DB::table('quetes')
             ->where('id', $idQuest)
-            ->update(['membre_id' => $idMembre]);
+            ->update(['membre_id' => $idMembre, 'dateFin' => $end]);
 
         $data = quete::all();
         return view('quetes.index', ['data' => $data]);
@@ -35,13 +39,5 @@ class QuetesController
             ->select('dateFin')
             ->where('id', $idQuest)
             ->get();
-
-        $dateActuelle = date('d/m/Y');
-
-        if($dateFin > $dateActuelle) {
-            echo "bonjour";
-        } else {
-            echo "dommage";
-        }
     }
 }
