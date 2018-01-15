@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateQueteTable extends Migration
+class CreateCommencerTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateQueteTable extends Migration
      */
     public function up()
     {
-        Schema::create('quetes', function (Blueprint $table) {
+        Schema::create('commencer', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('description');
-            $table->integer('recompense');
-            $table->dateTime('dateFin')->nullable();
-            $table->integer('membre_id')->nullable();
+            $table->integer('membre_id')->unsigned();
+            $table->integer('quete_id')->unsigned();
+
+            $table->foreign('membre_id')->references('id')->on('membres');
+            $table->foreign('quete_id')->references('id')->on('quetes');
         });
     }
 
@@ -30,6 +30,6 @@ class CreateQueteTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('quetes');
+        Schema::dropIfExists('commencer');
     }
 }
