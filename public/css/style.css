@@ -7,6 +7,14 @@
     width: 100%;
 }
 
+.membre{
+    background-color: white;
+    border: 0.4px solid black;
+    margin: 2%;
+    display: flex;
+    padding: 10px;
+}
+
 .quete a{
     margin: 10px 1%;
     border: 0.4px solid black;
