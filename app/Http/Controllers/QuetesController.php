@@ -30,7 +30,10 @@ class QuetesController
 
         DB::table('quetes')
             ->where('id', $idQuest)
-            ->update(['membre_id' => $idMembre, 'dateFin' => $end]);
+            ->update(['dateFin' => $end]);
+
+        DB::table('commencer')
+            ->insert(['membre_id' => $idMembre, 'quete_id' => $idQuest]);
 
         $data = DB::table('quetes')
             ->orderby('dateFin','desc')
