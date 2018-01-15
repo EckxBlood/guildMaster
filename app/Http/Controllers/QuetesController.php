@@ -18,7 +18,9 @@ class QuetesController
 
     public function index()
     {
-        $data = quete::all();
+        $data = DB::table('quetes')
+            ->orderby('dateFin','desc')
+            ->get();
         return view('quetes.index', ['data' => $data]);
     }
 
@@ -30,7 +32,10 @@ class QuetesController
             ->where('id', $idQuest)
             ->update(['membre_id' => $idMembre, 'dateFin' => $end]);
 
-        $data = quete::all();
+        $data = DB::table('quetes')
+            ->orderby('dateFin','desc')
+            ->get();
+
         return view('quetes.index', ['data' => $data]);
     }
 
