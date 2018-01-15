@@ -16,6 +16,6 @@
     @endforeach
     @if ($data2 >= 20)
         <a type="button" style="font-size: 18px; width:300px; margin-left: 50px; padding: 15px; text-decoration: none;"
-           href="{{ route('membres.add') }}">  Ajouter un membre  </a>
+           href="{{ route('membres.add', ['idMembre' => 1]) }}">  Ajouter un membre  </a>
     @endif
 @endsection

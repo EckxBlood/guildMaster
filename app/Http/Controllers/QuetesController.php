@@ -42,10 +42,15 @@ class QuetesController
         return view('quetes.index', ['data' => $data]);
     }
 
-    public function questComplete($idQuest) {
-        $dateFin = DB::table('quetes')
-            ->select('dateFin')
-            ->where('id', $idQuest)
+    public function questComplete($idMembre) {
+        DB::table('membres')
+            ->whereId($idMembre)
+            ->increment('niveau');
+
+        $data = DB::table('quetes')
+            ->orderby('dateFin','desc')
             ->get();
+
+        return view('quetes.index', ['data' => $data]);
     }
 }
