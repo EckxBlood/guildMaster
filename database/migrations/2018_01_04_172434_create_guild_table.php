@@ -20,7 +20,6 @@ class CreateGuildTable extends Migration
 
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('membre_id')->references('id')->on('membres');
-
         });
     }
 

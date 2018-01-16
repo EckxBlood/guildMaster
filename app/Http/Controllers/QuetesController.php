@@ -26,7 +26,14 @@ class QuetesController
 
     public function startQuest($idMembre, $idQuest) {
 
-        $end = date('Y-m-d H:i:s' , strtotime('now +1 Hour +20 seconds'));
+        $secondBeforeEnd = DB::table('quetes')
+                                ->whereId($idQuest)
+                                ->select('duree')
+                                ->get();
+
+        $string = 'now +1 Hour +'.$secondBeforeEnd[0]->duree.' seconds';
+
+        $end = date('Y-m-d H:i:s' , strtotime($string));
 
         DB::table('quetes')
             ->where('id', $idQuest)
