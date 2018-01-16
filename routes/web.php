@@ -27,7 +27,6 @@ Route::get('/membres/add', 'MembresController@add')->name('membres.add');
 Route::get('/quetes', 'QuetesController@index')->name('quetes');
 Route::get('/quetes/start/idMembre/{idMembre}/idQuest/{idQuest}', 'QuetesController@startQuest')->name('quetes.start');
 Route::get('/quetes/complete/{idQuest}', 'QuetesController@questComplete')->name('quetes.complete');
-Route::get('/quetes/show/id/{id}', 'QuetesController@show')->name('quetes.show');
 
 
 

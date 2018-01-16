@@ -29,19 +29,6 @@ class QuetesController
         return view('quetes.index', ['data' => $data, 'data2' => $data2]);
     }
 
-    public function show($idMembre)
-    {
-        $data = DB::table('quetes')
-            ->where('membre_id', $idMembre)
-            ->orderby('dateFin','desc')
-            ->get();
-
-        $data2 = DB::table('membres')
-            ->get();
-
-        return view('quetes.index', ['data' => $data, 'data2' => $data2]);
-    }
-
     public function startQuest($idMembre, $idQuest) {
 
         $secondBeforeEnd = DB::table('quetes')
