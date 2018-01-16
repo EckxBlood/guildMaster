@@ -21,7 +21,25 @@ class QuetesController
         $data = DB::table('quetes')
             ->orderby('dateFin','desc')
             ->get();
-        return view('quetes.index', ['data' => $data]);
+
+        $data2 = DB::table('membres')
+            ->get();
+
+
+        return view('quetes.index', ['data' => $data, 'data2' => $data2]);
+    }
+
+    public function show($idMembre)
+    {
+        $data = DB::table('quetes')
+            ->where('membre_id', $idMembre)
+            ->orderby('dateFin','desc')
+            ->get();
+
+        $data2 = DB::table('membres')
+            ->get();
+
+        return view('quetes.index', ['data' => $data, 'data2' => $data2]);
     }
 
     public function startQuest($idMembre, $idQuest) {
@@ -49,10 +67,14 @@ class QuetesController
         return view('quetes.index', ['data' => $data]);
     }
 
-    public function questComplete($idMembre) {
+    public function questComplete($idQuete, $idMembre) {
         DB::table('membres')
             ->whereId($idMembre)
             ->increment('niveau');
+
+        DB::table('quetes')
+            ->where('id', $idQuete)
+            ->delete();
 
         $data = DB::table('quetes')
             ->orderby('dateFin','desc')
