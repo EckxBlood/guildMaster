@@ -4,7 +4,7 @@
 
 
 $(document).ready(function(){
-   $('select').change(function(){
+   $('select#selectMembre').change(function(){
        var id = $('select > option:selected').attr('data-membre');
        $('.quete').hide();
        $('div[class*='+id+']').show();

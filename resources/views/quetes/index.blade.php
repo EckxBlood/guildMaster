@@ -3,7 +3,8 @@
 @section('content')
     <div class="container">
 
-        <select name="membres">
+        <select id="selectMembre" name="membres">
+            <option selected="selected"> Choisissez un membre</option>
             @foreach($data2 as $membre)
                 <option data-membre="{{$membre->id}}">{{$membre->name}}</option>
             @endforeach
@@ -30,9 +31,15 @@
                                                         <p>{{ $quete->description }}</p>
                                                         <p>{{ $quete->dateFin }}</p>
                                                         @if ( !$quete->dateFin )
-                                                            <a type="button"
-                                                               href="{{ route('quetes.start', ['idQuest' => $quete->id, 'idMembre' => 1]) }}">Commencer
-                                                                la quête</a>
+                                                            <form method="post" action="{{ route('quetes.start', ['idQuest' => $quete->id, 'idMembre' => 1]) }}">
+                                                                <select name="membres">
+                                                                    <option selected="selected"> Choisissez un membre</option>
+                                                                    @foreach($data2 as $membre)
+                                                                        <option data-membre="{{$membre->id}}">{{$membre->name}}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                                <input type="submit" value="Commencer la quete"></input>
+                                                            </form>
                                                         @endif
                                                         @if ( $quete->dateFin && $quete->dateFin < date('Y-m-d H:i:s', strtotime('now +1 Hour')))
                                                             <a type="button"
