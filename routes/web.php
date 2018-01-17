@@ -20,7 +20,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 //Membres
-Route::get('/membres', 'MembresController@index')->name('membres');
+Route::get('/membres', 'GuildController@index')->name('membres');
 Route::get('/membres/add', 'MembresController@add')->name('membres.add');
 
 //Quetes
