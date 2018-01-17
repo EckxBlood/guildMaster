@@ -30,7 +30,7 @@
                                                         <p>{{ $quete->description }}</p>
                                                         <p>{{ $quete->dateFin }}</p>
                                                         @if ( !$quete->dateFin )
-                                                            <select id="membresQuetes{{ $quete->id }}" title="Choisir membre">
+                                                            <select id="membresQuetes{{ $quete->id }}" title="Choisir membre" style="margin:auto;">
                                                                 <option selected="selected"> Choisissez un membre
                                                                 </option>
                                                                 @foreach($data3 as $membre)
