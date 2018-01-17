@@ -9,10 +9,10 @@
                     <div class="quete">
                         <div class="content">
                             <h3> {{ $membre->name }}</h3>
-                            <h3> {{ $membre->description }}</h3>
-                            <h3> {{ $membre->attaque }}</h3>
-                            <h3> {{ $membre->defense }}</h3>
-                            <h3> {{ $membre->niveau }}</h3>
+                            <p> {{ $membre->description }}</p>
+                            <p> {{ $membre->attaque }}</p>
+                            <p> {{ $membre->defense }}</p>
+                            <p> {{ $membre->niveau }}</p>
                         </div>
                     </div>
                 </div>

@@ -28,6 +28,7 @@
                                                     <div class="content">
                                                         <h3> {{ $quete->name }}</h3>
                                                         <p>{{ $quete->description }}</p>
+                                                        <p>{{ $quete->recompense }}</p>
                                                         <p>{{ $quete->dateFin }}</p>
                                                         @if ( !$quete->dateFin )
                                                             <select id="membresQuetes{{ $quete->id }}" title="Choisir membre" style="margin:auto;">
