@@ -8,7 +8,7 @@ $(document).ready(function(){
        var id = $('select > option:selected').attr('data-membre');
        $('.quete').hide();
        $('div[class*='+id+']').show();
-   })
+   });
 
     $('button[id*=startQuest]').click(function() {
 
@@ -22,7 +22,7 @@ $(document).ready(function(){
             type: 'GET',
             url: "http://127.0.0.1:8000/quetes/start/idMembre/"+ idMembre +"/idQuest/"+idQuest,
             success: function () {
-                console.log("ok");
+                location.reload();
             },
             error: function (e) {
                 console.log(e);

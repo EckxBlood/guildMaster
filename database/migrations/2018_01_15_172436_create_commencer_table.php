@@ -15,6 +15,7 @@ class CreateCommencerTable extends Migration
     {
         Schema::create('commencer', function (Blueprint $table) {
             $table->increments('id');
+            $table->dateTime('dateFin')->nullable();
             $table->integer('membre_id')->unsigned();
             $table->integer('quete_id')->unsigned();
 
