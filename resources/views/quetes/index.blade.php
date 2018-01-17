@@ -33,7 +33,7 @@
                                                             <select id="membresQuetes{{ $quete->id }}" title="Choisir membre">
                                                                 <option selected="selected"> Choisissez un membre
                                                                 </option>
-                                                                @foreach($data2 as $membre)
+                                                                @foreach($data3 as $membre)
                                                                     <option data-membre="{{$membre->id}}">{{$membre->name}}</option>
                                                                 @endforeach
                                                             </select>

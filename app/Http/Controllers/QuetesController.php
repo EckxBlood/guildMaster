@@ -44,7 +44,14 @@ class QuetesController
             ->where('guild.user_id', Auth::user()->id)
             ->get();
 
-        return view('quetes.index', ['data' => $data, 'data2' => $data2]);
+        $data3 =DB::select('SELECT membres.id, membres.name FROM membres 
+              inner join guild on guild.membre_id=membres.id 
+              left JOIN commencer on membres.id = commencer.membre_id 
+              where commencer.membre_id IS NULL AND guild.user_id=:user_id', ['user_id' => Auth::user()->id]);
+
+        dump($data3);
+
+        return view('quetes.index', ['data' => $data, 'data2' => $data2, 'data3' => $data3]);
     }
 
     public function startQuest($idMembre, $idQuest) {
