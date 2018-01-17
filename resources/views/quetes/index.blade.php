@@ -39,9 +39,9 @@
                                                             </select>
                                                             <button id="startQuest{{ $quete->id }}">Commencer la quete</button>
                                                         @endif
-                                                        @if ( $quete->dateFin && $quete->dateFin < date('Y-m-d H:i:s', strtotime('now +1 Hour')) && isset($quete->membre_id[0]->membre_id))
+                                                        @if ( isset($quete->dateFin) && $quete->dateFin < date('Y-m-d H:i:s', strtotime('now +1 Hour')) && isset($quete->membre_id))
                                                             <a type="button"
-                                                               href="{{ route('quetes.complete', ['idQuest' => $quete->id, 'idMembre' => $quete->membre_id[0]->membre_id]) }}">Terminer
+                                                               href="{{ route('quetes.complete', ['idQuest' => $quete->id, 'idMembre' => $quete->membre_id]) }}">Terminer
                                                                 la quête</a>
                                                         @endif
                                                     </div>

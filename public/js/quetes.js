@@ -15,7 +15,7 @@ $(document).ready(function(){
         var idQuest = $(this).attr("id").slice(10);
         console.log(idQuest);
 
-        var idMembre = $('select[id*=membresQuetes]').attr("id").slice(13);
+        var idMembre = $('#membresQuetes'+idQuest).attr("id").slice(13);
         console.log(idMembre);
 
         $.ajax({

@@ -19,17 +19,24 @@ class QuetesController
 
     public function index()
     {
-
         $data = DB::table('quetes')
-            ->orderby('dateFin','desc')
             ->get();
 
         foreach($data as $d) {
-            $membre_id = DB::table("commencer")
-                ->select("membre_id")
+            $commencer = DB::table("commencer")
+                ->select("membre_id", "dateFin")
                 ->where('quete_id', $d->id)
                 ->get();
-            $d->membre_id = $membre_id;
+
+            $commencer = $commencer->all();
+
+            if(!empty($commencer)) {
+                $d->membre_id = $commencer[0]->membre_id;
+                $d->dateFin = $commencer[0]->dateFin;
+            } else {
+                $d->membre_id = null;
+                $d->dateFin = null;
+            }
         }
 
         $data2 = DB::table('membres')
@@ -51,18 +58,35 @@ class QuetesController
 
         $end = date('Y-m-d H:i:s' , strtotime($string));
 
-        DB::table('quetes')
-            ->where('id', $idQuest)
-            ->update(['dateFin' => $end]);
-
         DB::table('commencer')
-            ->insert(['membre_id' => $idMembre, 'quete_id' => $idQuest]);
+            ->insert(['membre_id' => $idMembre, 'quete_id' => $idQuest, 'dateFin' => $end]);
 
         $data = DB::table('quetes')
-            ->orderby('dateFin','desc')
             ->get();
 
-        return view('quetes.index', ['data' => $data]);
+        foreach($data as $d) {
+            $commencer = DB::table("commencer")
+                ->select("membre_id", "dateFin")
+                ->where('quete_id', $d->id)
+                ->get();
+
+            $commencer = $commencer->all();
+
+            if(!empty($commencer)) {
+                $d->membre_id = $commencer[0]->membre_id;
+                $d->dateFin = $commencer[0]->dateFin;
+            } else {
+                $d->membre_id = null;
+                $d->dateFin = null;
+            }
+        }
+
+        $data2 = DB::table('membres')
+            ->join('guild', 'guild.membre_id', '=', 'membres.id')
+            ->where('guild.user_id', Auth::user()->id)
+            ->get();
+
+        return view('quetes.index', ['data' => $data, 'data2' => $data2]);
     }
 
     public function questComplete($idQuete, $idMembre) {
@@ -76,15 +100,23 @@ class QuetesController
             ->delete();
 
         $data = DB::table('quetes')
-            ->orderby('dateFin','desc')
             ->get();
 
         foreach($data as $d) {
-            $membre_id = DB::table("commencer")
-                ->select("membre_id")
+            $commencer = DB::table("commencer")
+                ->select("membre_id", "dateFin")
                 ->where('quete_id', $d->id)
                 ->get();
-            $d->membre_id = $membre_id;
+
+            $commencer = $commencer->all();
+
+            if(!empty($commencer)) {
+                $d->membre_id = $commencer[0]->membre_id;
+                $d->dateFin = $commencer[0]->dateFin;
+            } else {
+                $d->membre_id = null;
+                $d->dateFin = null;
+            }
         }
 
         $data2 = DB::table('membres')
