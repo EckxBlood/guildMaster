@@ -49,8 +49,6 @@ class QuetesController
               left JOIN commencer on membres.id = commencer.membre_id 
               where commencer.membre_id IS NULL AND guild.user_id=:user_id', ['user_id' => Auth::user()->id]);
 
-        dump($data3);
-
         return view('quetes.index', ['data' => $data, 'data2' => $data2, 'data3' => $data3]);
     }
 
@@ -93,7 +91,12 @@ class QuetesController
             ->where('guild.user_id', Auth::user()->id)
             ->get();
 
-        return view('quetes.index', ['data' => $data, 'data2' => $data2]);
+        $data3 =DB::select('SELECT membres.id, membres.name FROM membres 
+              inner join guild on guild.membre_id=membres.id 
+              left JOIN commencer on membres.id = commencer.membre_id 
+              where commencer.membre_id IS NULL AND guild.user_id=:user_id', ['user_id' => Auth::user()->id]);
+
+        return view('quetes.index', ['data' => $data, 'data2' => $data2, 'data3' => $data3]);
     }
 
     public function questComplete($idQuete, $idMembre) {
@@ -102,8 +105,8 @@ class QuetesController
             ->increment('niveau');
 
         DB::table('commencer')
-            ->where('membre_id', $idMembre)
-            ->where('quete_id', $idQuete)
+            ->where('commencer.quete_id', $idQuete)
+            ->where('commencer.membre_id', $idMembre)
             ->delete();
 
         $data = DB::table('quetes')
@@ -131,6 +134,11 @@ class QuetesController
             ->where('guild.user_id', Auth::user()->id)
             ->get();
 
-        return view('quetes.index', ['data' => $data, 'data2' => $data2]);
+        $data3 =DB::select('SELECT membres.id, membres.name FROM membres 
+              inner join guild on guild.membre_id=membres.id 
+              left JOIN commencer on membres.id = commencer.membre_id 
+              where commencer.membre_id IS NULL AND guild.user_id=:user_id', ['user_id' => Auth::user()->id]);
+
+        return view('quetes.index', ['data' => $data, 'data2' => $data2, 'data3' => $data3]);
     }
 }
