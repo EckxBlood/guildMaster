@@ -10,6 +10,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use App\Quete;
 use DateTime;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 
@@ -18,13 +19,23 @@ class QuetesController
 
     public function index()
     {
+
         $data = DB::table('quetes')
             ->orderby('dateFin','desc')
             ->get();
 
-        $data2 = DB::table('membres')
-            ->get();
+        foreach($data as $d) {
+            $membre_id = DB::table("commencer")
+                ->select("membre_id")
+                ->where('quete_id', $d->id)
+                ->get();
+            $d->membre_id = $membre_id;
+        }
 
+        $data2 = DB::table('membres')
+            ->join('guild', 'guild.membre_id', '=', 'membres.id')
+            ->where('guild.user_id', Auth::user()->id)
+            ->get();
 
         return view('quetes.index', ['data' => $data, 'data2' => $data2]);
     }
@@ -59,14 +70,28 @@ class QuetesController
             ->whereId($idMembre)
             ->increment('niveau');
 
-        DB::table('quetes')
-            ->where('id', $idQuete)
+        DB::table('commencer')
+            ->where('membre_id', $idMembre)
+            ->where('quete_id', $idQuete)
             ->delete();
 
         $data = DB::table('quetes')
             ->orderby('dateFin','desc')
             ->get();
 
-        return view('quetes.index', ['data' => $data]);
+        foreach($data as $d) {
+            $membre_id = DB::table("commencer")
+                ->select("membre_id")
+                ->where('quete_id', $d->id)
+                ->get();
+            $d->membre_id = $membre_id;
+        }
+
+        $data2 = DB::table('membres')
+            ->join('guild', 'guild.membre_id', '=', 'membres.id')
+            ->where('guild.user_id', Auth::user()->id)
+            ->get();
+
+        return view('quetes.index', ['data' => $data, 'data2' => $data2]);
     }
 }
