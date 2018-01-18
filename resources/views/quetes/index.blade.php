@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
 
         <select id="selectMembre" name="membres" title="Choisir membre">
             <option selected="selected"> Choisissez un membre</option>
@@ -57,5 +56,4 @@
                                         </div>
                             </div>
                     </div>
-    </div>
 @endsection
