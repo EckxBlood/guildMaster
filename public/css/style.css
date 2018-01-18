@@ -1,36 +1,56 @@
 .quete{
-    background-color: white;
-    border: 0.4px solid black;
-    margin: 2%;
+    background-color: #fff8bc;
+    background-image: radial-gradient(circle at center, #fff8bc, #fbae4e);
+    border-radius: 10px;
+    border: 8px solid #fff6b1;
+    margin: 2% 0;
     display: flex;
     padding: 10px;
     width: 100%;
+    color: white;
+    text-shadow: 2px 0 0 black, -2px 0 0 black, 0 2px 0 black, 0 -2px 0 black, 1px 1px black, -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black;
 }
 
 .membre{
-    background-color: white;
-    border: 0.4px solid black;
-    margin: 2%;
-    display: flex;
-    padding: 10px;
+    margin: 10px 1%;
+    background-color: #F9F9F9;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    background-image: radial-gradient(circle at center, #fffca9, #ffe763);
+    border: 5px solid #fff6b1;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 16px;
+    text-shadow: 2px 0 0 black, -2px 0 0 black, 0 2px 0 black, 0 -2px 0 black, 1px 1px black, -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black;
+    box-shadow: 0 3px 3px 0 rgba(0,0,0,0.2), 0 5px 5px 0 rgba(0,0,0,0.19);
 }
 
 .quete a{
     margin: 10px 1%;
-    border: 0.4px solid black;
     background-color: #F9F9F9;
-    color: black;
-    padding: 10px;
+    color: white;
+    padding: 15px;
     text-align: center;
+    background-image: radial-gradient(circle at center, #fffca9, #ffe763);
+    border: 5px solid #fff6b1;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 16px;
+    text-shadow: 2px 0 0 black, -2px 0 0 black, 0 2px 0 black, 0 -2px 0 black, 1px 1px black, -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black;
+    box-shadow: 0 3px 3px 0 rgba(0,0,0,0.2), 0 5px 5px 0 rgba(0,0,0,0.19);
 }
 
 p {
     margin: 20px 5%;
-    font-size: 18px;
+    font-size: 24px;
+    font-weight: 800;
 }
 
 h3{
     margin: 20px 5%;
+    font-size: 32px;
+    font-weight: 800;
 }
 
 .content{
@@ -39,6 +59,82 @@ h3{
     margin: auto;
 }
 
+.listQuete{
+    margin: auto;
+    padding: 2%;
+}
+
+#app{
+    background-image: url('wood.jpg');
+    min-height: 100vh;
+}
+
+select{
+    background-color: #fdd74d;
+    padding: 10px;
+    margin: 20px auto;
+    font-weight: bold;
+    font-size: 16px;
+    color: white;
+    text-shadow: 2px 0 0 black, -2px 0 0 black, 0 2px 0 black, 0 -2px 0 black, 1px 1px black, -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black;
+    box-shadow: 0 3px 3px 0 rgba(0,0,0,0.2), 0 5px 5px 0 rgba(0,0,0,0.19);
+}
+
+button{
+    background-image: radial-gradient(circle at center, #a2d8ff, #49aaf7);
+    border: 5px solid #fff6b1;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 16px;
+    text-shadow: 2px 0 0 black, -2px 0 0 black, 0 2px 0 black, 0 -2px 0 black, 1px 1px black, -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black;
+    box-shadow: 0 3px 3px 0 rgba(0,0,0,0.2), 0 5px 5px 0 rgba(0,0,0,0.19);
+}
+
+button:hover{
+    text-decoration: none;
+    background-image: radial-gradient(circle at center, #72a8CC, #49aaf7);
+}
+
+.validQuest:hover{
+    text-decoration: none;
+    background-image: radial-gradient(circle at center, #FCD976, #ffe763);
+}
+
+h1{
+    text-align: center;
+    font-weight:800;
+    color:white;
+    text-shadow: 2px 0 0 black, -2px 0 0 black, 0 2px 0 black, 0 -2px 0 black, 1px 1px black, -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black;
+}
+
+.navbar-default .navbar-collapse{
+    background-image: linear-gradient(#532a06, #714913);
+    width: 100%;
+    border: 0;
+}
+
+.navbar-default .navbar-brand{
+    color: white;
+    text-shadow: 2px 0 0 black, -2px 0 0 black, 0 2px 0 black, 0 -2px 0 black, 1px 1px black, -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black;
+}
+
+.navbar-default .navbar-nav>li>a{
+    color: white;
+}
+
+ul.nav.navbar-nav.navbar-right{
+    margin-right: 20px;
+}
+
+.navbar-default{
+    border: 0;
+    box-shadow: 0 9px 9px 0 rgba(0,0,0,0.2), 0 10px 10px 0 rgba(0,0,0,0.19);
+
+}
+
+#selectMembre{
+    margin-left: 5%;
+}
 @media screen and (max-width: 990px) {
     p {
         margin: 20px 3%;

@@ -1,0 +1,13 @@
+body{
+    background-image: url(wood.jpg);
+    font-weight: bold;
+    font-size: 16px;
+    text-shadow: 2px 0 0 black, -2px 0 0 black, 0 2px 0 black, 0 -2px 0 black, 1px 1px black, -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black;
+}
+
+.links > a{
+    background-image: url(plank.png);
+    padding: 10px;
+    background-size:105%;
+    color: #CCCCCC;
+}
