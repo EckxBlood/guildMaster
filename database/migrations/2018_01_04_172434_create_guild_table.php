@@ -17,6 +17,9 @@ class CreateGuildTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->integer('membre_id')->unsigned();
+            $table->integer('attaque');
+            $table->integer('defense');
+            $table->integer('niveau');
 
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('membre_id')->references('id')->on('membres');

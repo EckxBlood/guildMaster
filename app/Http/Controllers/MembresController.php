@@ -22,26 +22,46 @@ class MembresController
 
     public function index()
     {
-        $data = membre::all();
+        $data = DB::table('membres as m')
+            ->select('m.*', 'g.attaque', 'g.defense', 'g.niveau')
+            ->join('guild as g', 'g.membre_id','=', 'm.id')
+            ->get();
 
-        $data2 = DB::table('membres')
+        $data2 = DB::table('guild as g')
             ->select('niveau')
+            ->where('user_id', Auth::user()->id)
             ->orderby('id','desc')
             ->limit(1)
             ->get();
 
-        return view('membres.index', ['data' => $data, 'data2' =>$data2[0]->niveau]);
+        //return view('membres.index', ['data' => $data, 'data2' =>$data2[0]->niveau]);
     }
 
     public function add(){
+
         DB::table('membres')->insert(
-            ['name' => 'test', 'description' => 'test' , 'attaque' => 10, 'defense' => 10, 'niveau'=>1]
+            ['name' => 'test', 'description' => 'test']
         );
 
-        $data = membre::all();
+        $idMembre = DB::table('membres')
+            ->select('id')
+            ->orderby('id', 'desc')
+            ->limit(1)
+            ->get();
 
-        $data2 = DB::table('membres')
+        DB::table('guild')
+            ->insert(
+                ['user_id' => Auth::user()->id, 'membre_id' => $idMembre[0]->id, 'attaque' => 1, 'defense' => 1, 'niveau' => 1]
+            );
+
+        $data = DB::table('membres as m')
+            ->select('m.*', 'g.attaque', 'g.defense', 'g.niveau')
+            ->join('guild as g', 'g.membre_id','=', 'm.id')
+            ->get();
+
+        $data2 = DB::table('guild as g')
             ->select('niveau')
+            ->where('user_id', Auth::user()->id)
             ->orderby('id','desc')
             ->limit(1)
             ->get();

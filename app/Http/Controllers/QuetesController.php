@@ -100,8 +100,9 @@ class QuetesController
     }
 
     public function questComplete($idQuete, $idMembre) {
-        DB::table('membres')
-            ->whereId($idMembre)
+        DB::table('guild')
+            ->where('membre_id',$idMembre)
+            ->where('user_id', Auth::user()->id)
             ->increment('niveau');
 
         DB::table('commencer')

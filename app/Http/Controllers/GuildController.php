@@ -16,11 +16,11 @@ class GuildController extends Controller
             ->where('guild.user_id',Auth::user()->id)
             ->get();
 
-        $data2 = DB::table('membres')
-            ->select('membres.niveau')
-            ->join('guild','membres.id','=', 'guild.membre_id')
-            ->where('guild.user_id',Auth::user()->id)
-            ->orderby('guild.id','desc')
+        $data2 = DB::table('guild as g')
+            ->select('g.niveau')
+            ->join('membres','membres.id','=', 'g.membre_id')
+            ->where('g.user_id',Auth::user()->id)
+            ->orderby('g.id','desc')
             ->limit(1)
             ->get();
 

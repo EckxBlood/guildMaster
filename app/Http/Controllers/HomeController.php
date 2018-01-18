@@ -33,9 +33,20 @@ class HomeController extends Controller
 
         if (empty($nbMembre[0]))
         {
-            DB::table('guild')->insert(
-                ['user_id' => Auth::user()->id, 'membre_id' => '1']
+            DB::table('membres')->insert(
+                ['name' => 'test', 'description' => 'test']
             );
+
+            $idMembre = DB::table('membres')
+                ->select('id')
+                ->orderby('id', 'desc')
+                ->limit(1)
+                ->get();
+
+            DB::table('guild')
+                ->insert(
+                    ['user_id' => Auth::user()->id, 'membre_id' => $idMembre[0]->id, 'attaque' => 1, 'defense' => 1, 'niveau' => 1]
+                );
         }
 
         return view('home');

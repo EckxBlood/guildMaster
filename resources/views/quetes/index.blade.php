@@ -10,6 +10,8 @@
             @endforeach
         </select>
 
+        <button id="reload">Recharger</button>
+
         @foreach($data as $quete)
             @if (isset($quete->membre_id))
                 @if ( $quete->dateFin && $quete->dateFin < date('Y-m-d H:i:s', strtotime('now +1 Hour')))
