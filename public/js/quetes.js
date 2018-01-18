@@ -31,7 +31,25 @@ $(document).ready(function(){
     });
 
     $('#reload').click(function() {
-        location.reload();
+        location.href = "http://127.0.0.1:8000/quetes";
     })
+
+    $('#questComplete').click(function() {
+
+        var idQuete = $(this).attr("data-quete");
+        var idMembre = $(this).attr("data-membre");
+
+        $.ajax({
+            type: 'GET',
+            url: "http://127.0.0.1:8000/quetes/complete/idQuest/"+ idQuete +"/idMembre/"+idMembre,
+            success: function () {
+                location.reload();
+            },
+            error: function (e) {
+                console.log(e);
+            }
+        });
+
+    });
 
 });

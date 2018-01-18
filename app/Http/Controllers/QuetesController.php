@@ -96,14 +96,40 @@ class QuetesController
               left JOIN commencer on membres.id = commencer.membre_id 
               where commencer.membre_id IS NULL AND guild.user_id=:user_id', ['user_id' => Auth::user()->id]);
 
-        return view('quetes.index', ['data' => $data, 'data2' => $data2, 'data3' => $data3]);
+        //return view('quetes.index', ['data' => $data, 'data2' => $data2, 'data3' => $data3]);
     }
 
     public function questComplete($idQuete, $idMembre) {
-        DB::table('guild')
-            ->where('membre_id',$idMembre)
+
+        $fail = true;
+
+        $membre = DB::table('guild')
+            ->select('attaque', 'defense', 'niveau')
+            ->where('membre_id', $idMembre)
             ->where('user_id', Auth::user()->id)
-            ->increment('niveau');
+            ->get();
+
+        $rand = rand(5, 15);
+
+        if((($membre[0]->attaque*$rand)+($membre[0]->defense*$rand)+($membre[0]->niveau*$rand)) > (10*$rand)) {
+
+            DB::table('guild')
+                ->where('membre_id', $idMembre)
+                ->where('user_id', Auth::user()->id)
+                ->increment('niveau');
+
+            DB::table('guild')
+                ->where('membre_id', $idMembre)
+                ->where('user_id', Auth::user()->id)
+                ->increment('attaque');
+
+            DB::table('guild')
+                ->where('membre_id', $idMembre)
+                ->where('user_id', Auth::user()->id)
+                ->increment('defense');
+
+            $fail = false;
+        }
 
         DB::table('commencer')
             ->where('commencer.quete_id', $idQuete)
@@ -140,6 +166,6 @@ class QuetesController
               left JOIN commencer on membres.id = commencer.membre_id 
               where commencer.membre_id IS NULL AND guild.user_id=:user_id', ['user_id' => Auth::user()->id]);
 
-        return view('quetes.index', ['data' => $data, 'data2' => $data2, 'data3' => $data3]);
+        return view('quetes.index', ['data' => $data, 'data2' => $data2, 'data3' => $data3, 'fail' => $fail, 'queteFail' => $idQuete]);
     }
 }

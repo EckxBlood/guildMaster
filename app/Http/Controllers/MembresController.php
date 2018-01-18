@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 
@@ -66,6 +67,6 @@ class MembresController
             ->limit(1)
             ->get();
 
-        return view('membres.index', ['data' => $data, 'data2' =>$data2[0]->niveau]);
+        //return view('membres.index', ['data' => $data, 'data2' =>$data2[0]->niveau]);
     }
 }

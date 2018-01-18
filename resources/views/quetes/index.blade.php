@@ -26,26 +26,31 @@
                                                 <div class="quete">
                                                     @endif
                                                     @endif
-
+                                                    @if(isset($queteFail) && ($quete->id == $queteFail && $fail == true))
+                                                        <span style="color :red">Quete échouée !</span>
+                                                    @endif
                                                     <div class="content">
                                                         <h3> {{ $quete->name }}</h3>
                                                         <p>{{ $quete->description }}</p>
                                                         <p>{{ $quete->recompense }}</p>
                                                         <p>{{ $quete->dateFin }}</p>
                                                         @if ( !$quete->dateFin )
-                                                            <select id="membresQuetes{{ $quete->id }}" title="Choisir membre" style="margin:auto;">
+                                                            <select id="membresQuetes{{ $quete->id }}"
+                                                                    title="Choisir membre" style="margin:auto;">
                                                                 <option selected="selected"> Choisissez un membre
                                                                 </option>
                                                                 @foreach($data3 as $membre)
                                                                     <option data-membre="{{$membre->id}}">{{$membre->name}}</option>
                                                                 @endforeach
                                                             </select>
-                                                            <button id="startQuest{{ $quete->id }}">Commencer la quete</button>
+                                                            <button id="startQuest{{ $quete->id }}">Commencer la
+                                                                quete
+                                                            </button>
                                                         @endif
                                                         @if ( isset($quete->dateFin) && $quete->dateFin < date('Y-m-d H:i:s', strtotime('now +1 Hour')) && isset($quete->membre_id))
-                                                            <a type="button"
-                                                               href="{{ route('quetes.complete', ['idQuest' => $quete->id, 'idMembre' => $quete->membre_id]) }}">Terminer
-                                                                la quête</a>
+                                                            <button id="questComplete" data-membre="{{$quete->membre_id}}" data-quete="{{ $quete->id }}">
+                                                                Terminer la quête
+                                                            </button>
                                                         @endif
                                                     </div>
                                                 </div>
