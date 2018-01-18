@@ -32,7 +32,7 @@ $(document).ready(function(){
 
     $('#reload').click(function() {
         location.href = "http://127.0.0.1:8000/quetes";
-    })
+    });
 
     $('#questComplete').click(function() {
 
@@ -42,14 +42,17 @@ $(document).ready(function(){
         $.ajax({
             type: 'GET',
             url: "http://127.0.0.1:8000/quetes/complete/idQuest/"+ idQuete +"/idMembre/"+idMembre,
-            success: function () {
-                location.reload();
+            dataType: 'json',
+            success: function (data) {
+                if(data.fail) {
+                    $('#fail' + data.queteFail).show();
+                } else {
+                    location.reload();
+                }
             },
             error: function (e) {
                 console.log(e);
             }
         });
-
     });
-
 });

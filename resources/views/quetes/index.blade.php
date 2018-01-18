@@ -26,9 +26,7 @@
                                                 <div class="quete">
                                                     @endif
                                                     @endif
-                                                    @if(isset($queteFail) && ($quete->id == $queteFail && $fail == true))
-                                                        <span style="color :red">Quete échouée !</span>
-                                                    @endif
+                                                    <span style="color :red" id="fail{{ $quete->id }}" hidden="hidden">Quete échouée !</span>
                                                     <div class="content">
                                                         <h3> {{ $quete->name }}</h3>
                                                         <p>{{ $quete->description }}</p>
