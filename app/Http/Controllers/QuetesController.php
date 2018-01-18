@@ -66,7 +66,7 @@ class QuetesController
         DB::table('commencer')
             ->insert(['membre_id' => $idMembre, 'quete_id' => $idQuest, 'dateFin' => $end]);
 
-        $data = DB::table('quetes')
+        /*$data = DB::table('quetes')
             ->get();
 
         foreach($data as $d) {
@@ -94,7 +94,7 @@ class QuetesController
         $data3 =DB::select('SELECT membres.id, membres.name FROM membres 
               inner join guild on guild.membre_id=membres.id 
               left JOIN commencer on membres.id = commencer.membre_id 
-              where commencer.membre_id IS NULL AND guild.user_id=:user_id', ['user_id' => Auth::user()->id]);
+              where commencer.membre_id IS NULL AND guild.user_id=:user_id', ['user_id' => Auth::user()->id]);*/
 
         //return view('quetes.index', ['data' => $data, 'data2' => $data2, 'data3' => $data3]);
     }
@@ -136,7 +136,7 @@ class QuetesController
             ->where('commencer.membre_id', $idMembre)
             ->delete();
 
-        $data = DB::table('quetes')
+        /*$data = DB::table('quetes')
             ->get();
 
         foreach($data as $d) {
@@ -164,7 +164,7 @@ class QuetesController
         $data3 =DB::select('SELECT membres.id, membres.name FROM membres 
               inner join guild on guild.membre_id=membres.id 
               left JOIN commencer on membres.id = commencer.membre_id 
-              where commencer.membre_id IS NULL AND guild.user_id=:user_id', ['user_id' => Auth::user()->id]);
+              where commencer.membre_id IS NULL AND guild.user_id=:user_id', ['user_id' => Auth::user()->id]);*/
 
         return view('quetes.index', ['data' => $data, 'data2' => $data2, 'data3' => $data3, 'fail' => $fail, 'queteFail' => $idQuete]);
     }

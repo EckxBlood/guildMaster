@@ -35,7 +35,7 @@ class MembresController
             ->limit(1)
             ->get();
 
-        //return view('membres.index', ['data' => $data, 'data2' =>$data2[0]->niveau]);
+        return view('membres.index', ['data' => $data, 'data2' =>$data2[0]->niveau]);
     }
 
     public function add(){
@@ -67,6 +67,6 @@ class MembresController
             ->limit(1)
             ->get();
 
-        //return view('membres.index', ['data' => $data, 'data2' =>$data2[0]->niveau]);
+        return view('membres.index', ['data' => $data, 'data2' =>$data2[0]->niveau]);
     }
 }
